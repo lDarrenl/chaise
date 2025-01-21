@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Horloge;
-use App\Repository\HorlogeRepository;
+use App\Entity\chaise;
+use App\Repository\chaiseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,33 +20,33 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(HorlogeRepository $HorlogeRepository): Response
+    public function index(chaiseRepository $chaiseRepository): Response
     {
-        $Horloge = $HorlogeRepository->findBy([], ['id' => 'DESC'], 4);
+        $Hchaise = $chaiseRepository->findBy([], ['id' => 'DESC'], 4);
 
         return $this->render('main/index.html.twig', [
-            'Horloge' => $Horloge,
+            'chaise' => $chaiseRepository,#
         ]);
     }
 
     #[Route('/gallery', name: 'gallery')]
-    public function gallery(HorlogeRepository $horlogeRepository): Response
+    public function gallery(chaiseRepository $chaiseRepository): Response
     {
-        $horloges = $horlogeRepository->findAll(); 
+        $chaises = $chaiseRepository->findAll(); 
 
         return $this->render('main/gallery.html.twig', [
-            'horloges' => $horloges,
+            'chaises' => $chaises,
         ]);
     }
 
     #[Route('/collection', name: 'collection')]
-    public function collection(Request $request, EntityManagerInterface $entityManager, HorlogeRepository $horlogeRepository): Response
+    public function collection(Request $request, EntityManagerInterface $entityManager, chaiseRepository $chaiseRepository): Response
     {
-        $horloge = new Horloge();
+        $chaise = new chaise();
 
-        $form = $this->createFormBuilder($horloge)
+        $form = $this->createFormBuilder($chaise)
             ->add('nom', TextType::class, [
-                'label' => 'Nom de l\'horloge',
+                'label' => 'Nom de l\'chaise',
                 'attr' => ['class' => 'form-control']
             ])
             ->add('image', FileType::class, [
@@ -60,7 +60,7 @@ class MainController extends AbstractController
                 'attr' => ['class' => 'form-control']
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Ajouter l\'horloge',
+                'label' => 'Ajouter l\'chaise',
                 'attr' => ['class' => 'btn btn-primary mt-3']
             ])
             ->getForm();
@@ -78,22 +78,22 @@ class MainController extends AbstractController
                         $newFilename
                     );
 
-                    $horloge->setImage('images/' . $newFilename);
+                    $chaise->setImage('images/' . $newFilename);
                 } catch (FileException $e) {
                 }
             }
 
-            $entityManager->persist($horloge);
+            $entityManager->persist($chaise);
             $entityManager->flush();
 
             return $this->redirectToRoute('collection');
         }
 
-        $horloges = $horlogeRepository->findAll();
+        $chaises = $chaiseRepository->findAll();
 
         return $this->render('main/collection.html.twig', [
             'form' => $form->createView(),
-            'horloges' => $horloges,
+            'chaises' => $chaise,
         ]);
     }
 
@@ -105,20 +105,20 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/collection/delete/{id}', name: 'delete_horloge', methods: ['POST'])]
-    public function delete(int $id, EntityManagerInterface $entityManager, HorlogeRepository $horlogeRepository): Response
+    #[Route('/collection/delete/{id}', name: 'delete_chaise', methods: ['POST'])]
+    public function delete(int $id, EntityManagerInterface $entityManager, chaiseRepository $hchaiseRepository): Response
     {
-        $horloge = $horlogeRepository->find($id);
+        $chaise = $chaiseRepository->find($id);
 
-        if (!$horloge) {
-            $this->addFlash('error', 'Horloge introuvable');
+        if (!$chaise) {
+            $this->addFlash('error', 'chaise introuvable');
             return $this->redirectToRoute('collection');
         }
 
-        $entityManager->remove($horloge);
+        $entityManager->remove($chaise);
         $entityManager->flush();
 
-        $this->addFlash('success', 'Horloge supprimée avec succès');
+        $this->addFlash('success', 'chaise supprimée avec succès');
         return $this->redirectToRoute('collection');
     }
 }
