@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="hero-card">
+    <div class="text-content">
+        <h1>Bienvenue sur SitScape</h1>
+        <p>
+            Explorez l'art du design à travers une collection unique de chaises modernes. De chefs-d'œuvre iconiques du XXe siècle aux créations contemporaines, chaque pièce incarne l'innovation et l'esthétique. [Nom du site] est le lieu idéal pour les passionnés de mobilier design, les amateurs de modernisme et les collectionneurs en quête de rareté. Découvrez comment le style et la fonctionnalité s'entrelacent dans ces objets emblématiques du quotidien.
+        </p>
+    </div>
+</div>
+
+<div class="latest-chaises">
+    <h2>Les Dernières chaise Ajoutées</h2>
+    <div class="chaise-cards">
+        {% for chaise in chaise %}
+            <div class="chaise-card">
+                <img src="{{ chaise.image }}" alt="{{ chaise.nom }}" class="chaise-image">
+                <h3>{{ chaise.nom }}</h3>
+                <p>{{ chaise.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
