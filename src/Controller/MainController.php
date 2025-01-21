@@ -22,7 +22,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(chaiseRepository $chaiseRepository): Response
     {
-        $Hchaise = $chaiseRepository->findBy([], ['id' => 'DESC'], 4);
+        $chaise = $chaiseRepository->findBy([], ['id' => 'DESC'], 4);
 
         return $this->render('main/index.html.twig', [
             'chaise' => $chaiseRepository,#
@@ -106,7 +106,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/collection/delete/{id}', name: 'delete_chaise', methods: ['POST'])]
-    public function delete(int $id, EntityManagerInterface $entityManager, chaiseRepository $hchaiseRepository): Response
+    public function delete(int $id, EntityManagerInterface $entityManager, chaiseRepository $chaiseRepository): Response
     {
         $chaise = $chaiseRepository->find($id);
 
