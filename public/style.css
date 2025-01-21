@@ -1,0 +1,396 @@
+body {
+    margin: 0;
+    font-family: 'Instrument Sans', sans-serif;
+    background-color: #00bdf7;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+    color: #000000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    padding: 10px 0;
+    background: none; 
+}
+
+.navbar ul {
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    gap: 10px;
+}
+
+.navbar ul li {
+    margin: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 20px;
+    font-size: 1.2rem; 
+    color: #000000;
+    text-decoration: none;
+    background-color: #002385; 
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); 
+}
+.nav-link:hover {
+    background-color: #00226d; 
+    transform: scale(1.1); 
+}
+
+.nav-link:active {
+    background-color: rgb(35, 6, 139); 
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 5px; 
+    }
+}
+
+.hero-card {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #002385;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin: 20px;
+}
+
+.text-content {
+    flex: 1; 
+    margin-right: 20px; 
+}
+
+.text-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px; 
+}
+
+.text-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.clock-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0; 
+}
+
+.clock-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.clock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.clock div {
+    position: absolute;
+    background-color: #000000;
+    border-radius: 2px;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    transition: transform 0.1s linear;
+}
+
+.chaises {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.chaise-card {
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #140665;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.chaise-card:hover {
+    transform: translateY(-10px);
+}
+
+img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .chaises {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #clock-container {
+        display: none;
+    }
+}
+
+.latest-chaises {
+    margin: 20px;
+    text-align: center;
+}
+
+.latest-chaises h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.chaise-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.chaise-card {
+    background-color: #002385;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.chaise-card:hover {
+    transform: translateY(-10px); 
+}
+
+.chaise-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.gallery {
+    text-align: center;
+    padding: 20px;
+}
+
+.gallery-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 50vh;
+    text-align: center; 
+}
+
+.gallery-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.gallery-header p {
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    overflow: hidden; 
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); 
+}
+
+.gallery-item img {
+    width: 100%; 
+    height: auto; 
+    transition: transform 0.3s ease; 
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); 
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+.collection {
+    text-align: center;
+    padding: 20px;
+}
+
+.collection h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.collection p {
+    font-size: 1.2rem;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #002385;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.form-container .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-container .btn {
+    background-color: #ffc107;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container .btn:hover {
+    background-color: #e0a800;
+}
+
+.chaise-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.chaise-item {
+    background-color: #002385;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.chaise-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.chaise-item h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.chaise-item p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.chaise-item .btn {
+    background-color: #3c72e7;
+    border: none;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chaise-item .btn:hover {
+    background-color: #c0392b;
+}
+
+.contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+    color: #000000;
+}
+
+.contact h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.contact-section {
+    margin-bottom: 20px;
+}
+
+.contact-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.contact-section a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-section a:hover {
+    color: #000000;
+}

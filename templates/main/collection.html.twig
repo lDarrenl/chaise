@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma Collection{% endblock %}
+
+{% block content %}
+<div class="collection">
+    <h1>Ma Collection</h1>
+    <p>Ajoutez ou supprimez des chaises de votre collection.</p>
+
+    <div class="form-container">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    <h2>Liste des chaises</h2>
+    <div class="chaise-list">
+        {% for chaise in chaises %}
+            <div class="chaise-item">
+                <img src="{{ asset(chaise.image) }}" alt="{{ chaise.nom }}" class="chaise-image">
+                <h3>{{ chaise.nom }}</h3>
+                <p>{{ chaise.description }}</p>
+                <form action="{{ path('chaise', { id: chaise.id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette chaise ?');">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </div>
+        {% else %}
+            <p>Aucune chaise dans votre collection.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
